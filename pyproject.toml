@@ -1,5 +1,9 @@
 [tool.poetry]
 name = "app"
+version = "0.0.0"
+description = "An application for french to english translation model showcasing"
+authors = ["Benoit Favier <benoitfamillefavier@gmail.com>"]
 
 [tool.poetry.dependencies]
+python = "^3.9.0"
 pygmalion = "0.1.2"
