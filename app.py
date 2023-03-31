@@ -5,7 +5,7 @@ import string
 from typing import List
 
 
-@st.cache_data(show_spinner=False)
+@st.cache_resource(show_spinner=False)
 def download_model():
     # return ml.neural_networks.TextTranslator.load("model.pth")
     return ml.neural_networks.TextTranslator.load("https://drive.google.com/file/d/1l4jxLJpLt8xmxf9JMIVM4lYv42erF--0/view?usp=share_link")
