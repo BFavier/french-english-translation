@@ -38,7 +38,6 @@ if len(input_text) > 0:
         progress_bar.progress(int(i*100/len(inputs)), "Traduction en cours ...")
     predictions = ["".join(filter(lambda x: x in string.printable, s)) for s in predictions]  # Filtre les charactères non-affichables
     progress_bar.empty()
-    print(predictions)
     st.caption("Traduction:")
     translation = " ".join(predictions)
-    st.code(translation)
+    st.markdown(f"~~~\n{translation}\n~~~")
