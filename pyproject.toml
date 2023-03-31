@@ -1,0 +1,5 @@
+[tool.poetry]
+name = "app"
+
+[tool.poetry.dependencies]
+pygmalion = "0.1.2"

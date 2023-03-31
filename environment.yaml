@@ -1,3 +1,0 @@
-name: stats
-dependencies:
-  - pygmalion=0.1.2
