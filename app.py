@@ -15,7 +15,7 @@ def format_sentences(text: str) -> List[str]:
     """
     Split an input text into formated input sentences
     """
-    sentences = re.split("(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s", text)
+    sentences = re.split("(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?|\!)\s", text)
     sentences = (s.capitalize().strip() for s in sentences)
     sentences = (s.replace(" ,", ",").replace(" .", ".") for s in sentences)
     sentences = (re.sub("(?<=[^\\s\\^]):", " :", re.sub("(?<=[^\\s\\^])\?", " ?", re.sub("(?<=[^\\s\\^])!", " !", s))) for s in sentences)
@@ -27,7 +27,7 @@ with st.spinner(text="Téléchargement du modèle ..."):
     model = download_model()
 
 st.title("Traduction français → anglais")
-input_text = st.text_area(label="Le text à traduire:", placeholder="J'ai toujours voulu être un vrai petit garçon ...", max_chars=10000, height=100)
+input_text = st.text_area(label="Le texte à traduire:", placeholder="J'ai toujours voulu être un vrai petit garçon ...", max_chars=10000, height=100)
 
 if len(input_text) > 0:
     inputs = format_sentences(input_text)
