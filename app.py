@@ -34,33 +34,33 @@ def format_sentences(text: str) -> List[str]:
     sentences = [s if s.endswith((".", "?", "!", ":")) else s+"." for s in sentences]
     return sentences, spacers
 
-
-with st.spinner(text="Téléchargement du modèle ..."):
-    model = download_model()
-
 with st.sidebar:
     st.image(get_picture())
     st.subheader("Projet par Benoit Favier")
-    st.markdown("Cette application est un projet personnel qui a pour vocation à démontrer mes compétences en NLP et en deep learning.")
+    st.markdown("Cette application est un projet personnel qui a pour vocation de partager mon émerveillement pour le deep learning.")
     st.markdown("[Mon site web](https://bfavier.github.io/)")
     st.markdown("[Ma page GitHub](https://github.com/BFavier)")
     st.markdown("[Ma page Linkedin](https://www.linkedin.com/in/benoit-favier-9694b9206/)")
 
-st.subheader("Traduction français → anglais")
+st.title("Traduction français → anglais")
 st.markdown("Cette application est une démonstration d'un modèle de NMT (Neural Machine Translation). "
             "La traduction est effectuée purement par un modèle de machine learning (Transformer), sans dictionnaire de traduction ni création de features. "
             "Le modèle a été entraîné sur ~1.2M de paires de phrases français/anglais pendant ~24h, sans avoir effectué de recherche particulière d'hyperparamètres optimaux. "
             "L'entraînement a été effectué avec la librairie [pygmalion](https://github.com/BFavier/Pygmalion) sur une RTX3090. "
             "Le modèle est ici appliqué phrase par phrase, sans tenir compte du contexte du document entier.")
+st.markdown("Vous pouvez par exemple le tester avec des paragraphes issus d'une page aléatoire de [wikipedia](https://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard).")
 st.subheader("Le texte à traduire:")
 input_text = st.text_area(label="Le texte à traduire:",
-                          placeholder="Si Pinocchio travaille bien à l'école, la fée bleu le transformera en un véritable petit garçon.",
+                          placeholder="Pinocchio avait toujours voulu devenir un véritable petit garçon...",
                           max_chars=10000, height=200, label_visibility="collapsed")
+
+with st.spinner(text="Téléchargement du modèle ..."):
+    model = download_model()
 
 if len(input_text) > 0:
     inputs, spacers = format_sentences(input_text)
     predictions = []
-    progress_bar = st.progress(0., "Traduction en cours ...")
+    progress_bar = st.progress(0., "Application du modèle ...")
     for i, input in enumerate(inputs, start=1):
         predictions.append(model.predict(input, n_beams=3)[0])
         progress_bar.progress(int(i*100/len(inputs)), "Traduction en cours ...")
