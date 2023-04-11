@@ -45,7 +45,7 @@ with st.sidebar:
 st.title("Traduction français → anglais")
 st.markdown("Cette application est une démonstration d'un modèle de NMT (Neural Machine Translation). "
             "La traduction est effectuée par un modèle de machine learning (Transformer) "
-            "entraîné sur ~3 millions de paires de phrases français/anglais."
+            "entraîné sur ~3 millions de paires de phrases français/anglais. "
             "Le modèle est appliqué phrase par phrase, sans tenir compte du contexte du document entier.")
 st.markdown("Vous pouvez par exemple le tester avec des paragraphes issus d'une page aléatoire de [Wikipedia](https://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard).")
 st.subheader("Le texte à traduire:")
