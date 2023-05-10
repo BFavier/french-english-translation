@@ -1,0 +1,3 @@
+pytorch==1.6.0+cpuonly
+scikit-image=0.19.2
+pygmalion==0.1.4
