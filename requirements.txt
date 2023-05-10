@@ -1,3 +1,4 @@
-cpuonly
+--extra-index-url https://download.pytorch.org/whl/cpu
 scikit-image==0.19.2
 pygmalion==0.1.4
+pytorch
